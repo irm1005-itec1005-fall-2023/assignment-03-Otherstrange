@@ -81,7 +81,7 @@ function removeToDoItem(todoId) {
 
   if (typeof todoId !== "number") {
     console.log("Please enter the ID as a number");
-  } else if (todoId > todoItems.length || todoId <= 0) {
+  } else if (todoId > todoItems.length+1 || todoId <= 0) {
     console.log("Please enter the ID of an existing task");
   } else {
     for (let i = 0; i < todoItems.length; i++) {
@@ -101,7 +101,7 @@ function removeToDoItem(todoId) {
 function markToDoItemAsCompleted(todoId) {
   if (typeof todoId !== "number") {
     console.log("Please enter the ID as a number");
-  } else if (todoId > todoItems.length || todoId <= 0) {
+  } else if (todoId > todoItems.length+1 || todoId <= 0) {
     console.log("Please enter the ID of an existing task");
   } else {
     for (let i = 0; i < todoItems.length; i++) {
@@ -120,9 +120,12 @@ function markToDoItemAsCompleted(todoId) {
 // true or false depending on whether the item was successfully deleted
 function deleteToDoItem(todoId) {
   // Implement the logic to remove a task here
+  console.log(todoId);
+  console.log(todoItems.length);
+
   if (typeof todoId !== "number") {
     console.log("Please enter the ID as a number");
-  } else if (todoId > todoItems.length || todoId <= 0) {
+  } else if (todoId > todoItems.length+1 || todoId <= 0) {
     console.log("Please enter the ID of an existing task");
   } else {
     for (let i = 0; i < todoItems.length; i++) {
