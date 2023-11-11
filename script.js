@@ -47,20 +47,21 @@
 
 let todoItems = new Array();
 
+let idCounter = 1;
+
 // Function to add a todo to the list
 // It should accept a string as a parameter (text of the todo item)
 // and it should add a new todo item to the todoItems array
 // the function does not need to return anything
 
 function addToDoItem(text) {
-  // Implement the logic to add a task here
   if (typeof text !== "string") {
     console.log("Please enter a string");
   } else {
     todoItems.push(
       {
         name: text,
-        id: todoItems.length + 1,
+        id: idCounter++,
         text: "This is a todo item",
         completed: false,
       }
@@ -77,16 +78,24 @@ function addToDoItem(text) {
 
 
 function removeToDoItem(todoId) {
-  // Implement the logic to add a task here
+  let idExists = false;
+
+  for (let i = 0; i < todoItems.length; i++) {
+    if (todoItems[i].id === todoId) {
+      idExists = true;
+    }
+  }
 
   if (typeof todoId !== "number") {
     console.log("Please enter the ID as a number");
-  } else if (todoId > todoItems.length+1 || todoId <= 0) {
+  } else if (idExists === false) {
     console.log("Please enter the ID of an existing task");
   } else {
     for (let i = 0; i < todoItems.length; i++) {
         if (todoItems[i].id === todoId) {
           todoItems.splice(i,1);
+          idCounter--;
+          break;
       }
     }
   }
@@ -99,9 +108,17 @@ function removeToDoItem(todoId) {
 // that matches the id passed to the function, set its completed property to true
 // the function does not need to return anything
 function markToDoItemAsCompleted(todoId) {
+  let idExists = false;
+
+  for (let i = 0; i < todoItems.length; i++) {
+    if (todoItems[i].id === todoId) {
+      idExists = true;
+    }
+  }
+
   if (typeof todoId !== "number") {
     console.log("Please enter the ID as a number");
-  } else if (todoId > todoItems.length+1 || todoId <= 0) {
+  } else if (idExists === false) {
     console.log("Please enter the ID of an existing task");
   } else {
     for (let i = 0; i < todoItems.length; i++) {
@@ -119,18 +136,24 @@ function markToDoItemAsCompleted(todoId) {
 // the function does not need to return anything, though you can return
 // true or false depending on whether the item was successfully deleted
 function deleteToDoItem(todoId) {
-  // Implement the logic to remove a task here
-  console.log(todoId);
-  console.log(todoItems.length);
+  let idExists = false;
+
+  for (let i = 0; i < todoItems.length; i++) {
+    if (todoItems[i].id === todoId) {
+      idExists = true;
+    }
+  }
 
   if (typeof todoId !== "number") {
     console.log("Please enter the ID as a number");
-  } else if (todoId > todoItems.length+1 || todoId <= 0) {
+  } else if (idExists === false) {
     console.log("Please enter the ID of an existing task");
   } else {
     for (let i = 0; i < todoItems.length; i++) {
       if (todoItems[i].id === todoId) {
         todoItems.splice(i,1);
+        idCounter--;
+        break;
       }
     }
   }
@@ -145,6 +168,7 @@ function clearCompletedTasks() {
   for (let i = 0; i < todoItems.length; i++) {
     if (todoItems[i].completed === true) {
       todoItems.splice(i,1);
+      idCounter--;
     }
   }
 
