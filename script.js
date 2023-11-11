@@ -83,6 +83,7 @@ function removeToDoItem(todoId) {
   for (let i = 0; i < todoItems.length; i++) {
     if (todoItems[i].id === todoId) {
       idExists = true;
+      break;
     }
   }
 
@@ -113,6 +114,7 @@ function markToDoItemAsCompleted(todoId) {
   for (let i = 0; i < todoItems.length; i++) {
     if (todoItems[i].id === todoId) {
       idExists = true;
+      break;
     }
   }
 
@@ -141,6 +143,7 @@ function deleteToDoItem(todoId) {
   for (let i = 0; i < todoItems.length; i++) {
     if (todoItems[i].id === todoId) {
       idExists = true;
+      break;
     }
   }
 
