@@ -45,14 +45,28 @@
 
 // Initialise an empty array with the variable name todoItems
 
+let todoItems = new Array();
+
+let idCounter = 1;
+
 // Function to add a todo to the list
 // It should accept a string as a parameter (text of the todo item)
 // and it should add a new todo item to the todoItems array
 // the function does not need to return anything
-function addToDoItem(text) {
-  // Implement the logic to add a task here
 
-  console.log("NOT YET IMPLEMENTED"); // Remove this line when you start working on the function
+function addToDoItem(text) {
+  if (typeof text !== "string") {
+    console.log("Please enter a string");
+  } else {
+    todoItems.push(
+      {
+        name: text,
+        id: idCounter++,
+        text: "This is a todo item",
+        completed: false,
+      }
+    )
+  }
 }
 
 // Function to remove a todo to the list
@@ -60,11 +74,33 @@ function addToDoItem(text) {
 // Loop through the array of todos, and when you find the todo item with the id
 // that matches the id passed to the function, remove it from the array
 // the function does not need to return anything
-function removeToDoItem(todoId) {
-  // Implement the logic to add a task here
 
-  console.log("NOT YET IMPLEMENTED"); // Remove this line when you start working on the function
+
+
+function removeToDoItem(todoId) {
+  let idExists = false;
+
+  for (let i = 0; i < todoItems.length; i++) {
+    if (todoItems[i].id === todoId) {
+      idExists = true;
+      break;
+    }
+  }
+
+  if (typeof todoId !== "number") {
+    console.log("Please enter the ID as a number");
+  } else if (idExists === false) {
+    console.log("Please enter the ID of an existing task");
+  } else {
+    for (let i = 0; i < todoItems.length; i++) {
+        if (todoItems[i].id === todoId) {
+          todoItems.splice(i,1);
+          break;
+      }
+    }
+  }
 }
+
 
 // Function to mark a task as completed
 // It should accept a number as a parameter (id of the todo item)
@@ -72,9 +108,26 @@ function removeToDoItem(todoId) {
 // that matches the id passed to the function, set its completed property to true
 // the function does not need to return anything
 function markToDoItemAsCompleted(todoId) {
-  // Implement the logic to mark a task as completed here
+  let idExists = false;
 
-  console.log("NOT YET IMPLEMENTED"); // Remove this line when you start working on the function
+  for (let i = 0; i < todoItems.length; i++) {
+    if (todoItems[i].id === todoId) {
+      idExists = true;
+      break;
+    }
+  }
+
+  if (typeof todoId !== "number") {
+    console.log("Please enter the ID as a number");
+  } else if (idExists === false) {
+    console.log("Please enter the ID of an existing task");
+  } else {
+    for (let i = 0; i < todoItems.length; i++) {
+      if (todoItems[i].id === todoId) {
+        todoItems[i].completed = true;
+      }
+    }
+  }
 }
 
 // Function to delete a task from the array
@@ -84,9 +137,27 @@ function markToDoItemAsCompleted(todoId) {
 // the function does not need to return anything, though you can return
 // true or false depending on whether the item was successfully deleted
 function deleteToDoItem(todoId) {
-  // Implement the logic to remove a task here
+  let idExists = false;
 
-  console.log("NOT YET IMPLEMENTED"); // Remove this line when you start working on the function
+  for (let i = 0; i < todoItems.length; i++) {
+    if (todoItems[i].id === todoId) {
+      idExists = true;
+      break;
+    }
+  }
+
+  if (typeof todoId !== "number") {
+    console.log("Please enter the ID as a number");
+  } else if (idExists === false) {
+    console.log("Please enter the ID of an existing task");
+  } else {
+    for (let i = 0; i < todoItems.length; i++) {
+      if (todoItems[i].id === todoId) {
+        todoItems.splice(i,1);
+        break;
+      }
+    }
+  }
 }
 
 // Function to clear all completed tasks
@@ -95,7 +166,12 @@ function deleteToDoItem(todoId) {
 function clearCompletedTasks() {
   // Implement the logic to clear completed tasks here
 
-  console.log("NOT YET IMPLEMENTED"); // Remove this line when you start working on the function
+  for (let i = 0; i < todoItems.length; i++) {
+    if (todoItems[i].completed === true) {
+      todoItems.splice(i,1);
+    }
+  }
+
 }
 
 // You can write your own tests here if you would like to test
