@@ -95,7 +95,6 @@ function removeToDoItem(todoId) {
     for (let i = 0; i < todoItems.length; i++) {
         if (todoItems[i].id === todoId) {
           todoItems.splice(i,1);
-          idCounter--;
           break;
       }
     }
@@ -155,7 +154,6 @@ function deleteToDoItem(todoId) {
     for (let i = 0; i < todoItems.length; i++) {
       if (todoItems[i].id === todoId) {
         todoItems.splice(i,1);
-        idCounter--;
         break;
       }
     }
@@ -171,7 +169,6 @@ function clearCompletedTasks() {
   for (let i = 0; i < todoItems.length; i++) {
     if (todoItems[i].completed === true) {
       todoItems.splice(i,1);
-      idCounter--;
     }
   }
 
